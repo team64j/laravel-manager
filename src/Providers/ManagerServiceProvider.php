@@ -10,7 +10,6 @@ class ManagerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        // ... other things
         $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
     }
 }
