@@ -1,7 +1,7 @@
 {
   "name": "team64j/laravel-manager",
   "description": "Laravel manager",
-  "homepage": "https://github.com/egulias/EmailValidator",
+  "homepage": "https://github.com/team64j/laravel-manager",
   "keywords": [
     "laravel",
     "manager"
@@ -15,5 +15,9 @@
   "require": {
     "php": ">=8.1"
   },
-  "minimum-stability": "dev"
+  "autoload": {
+    "psr-4": {
+      "Team64j\\LaravelManager\\": "src"
+    }
+  }
 }
