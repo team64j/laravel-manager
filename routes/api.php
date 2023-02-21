@@ -1,15 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Team64j\LaravelManager\Http\Controller\AuthController;
-use Team64j\LaravelManager\Http\Controller\BootstrapController;
+use Team64j\LaravelManager\Http\Controllers\AuthController;
+use Team64j\LaravelManager\Http\Controllers\BootstrapController;
 
 Route::name('manager.')
     ->prefix('manager')
     ->group(
         fn() => [
             Route::group([
-                'middleware' => 'api',
                 'prefix' => 'auth',
             ], fn() => [
                 Route::post('login', [AuthController::class, 'login']),

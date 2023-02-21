@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManager\Http\Controller;
+namespace Team64j\LaravelManager\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 

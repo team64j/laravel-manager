@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Team64j\LaravelManager\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Team64j\LaravelManager\Http\Middleware\Authenticate;
 
 class ManagerServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,7 @@ class ManagerServiceProvider extends ServiceProvider
 
         $this->app['router']->aliasMiddleware(
             'manager.auth',
-            \Team64j\LaravelManager\Http\Middleware\Authenticate::class
+            Authenticate::class
         );
     }
 }

@@ -20,5 +20,10 @@
     "psr-4": {
       "Team64j\\LaravelManager\\": "src"
     }
+  },
+  "scripts": {
+    "post-update-cmd": [
+      "@php artisan jwt:secret"
+    ]
   }
 }

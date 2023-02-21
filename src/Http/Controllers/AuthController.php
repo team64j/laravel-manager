@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Team64j\LaravelManager\Http\Controller;
+namespace Team64j\LaravelManager\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,7 +18,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('manager.auth', [
+        $this->middleware('manager.auth:manager', [
             'except' => ['index', 'login']
         ]);
     }
