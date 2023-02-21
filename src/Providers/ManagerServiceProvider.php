@@ -12,11 +12,14 @@ class ManagerServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
 
-        $this->mergeConfigFrom(__DIR__ . '/../../config/auth.php', 'manager.auth');
+        //$this->mergeConfigFrom(__DIR__ . '/../../config/auth.php', 'auth');
+
+        $this->app['config']['auth'] = array_merge_recursive(
+            require __DIR__ . '/../../config/auth.php',
+            $this->app['config']['auth']
+        );
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'manager');
-
-        //dd(config());
 
         $this->app['router']->aliasMiddleware(
             'manager.auth',
