@@ -11,6 +11,8 @@ class ManagerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/auth.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
         $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
 
         //$this->mergeConfigFrom(__DIR__ . '/../../config/auth.php', 'auth');

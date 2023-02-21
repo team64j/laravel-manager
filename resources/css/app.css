@@ -1,0 +1,216 @@
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind screens;
+@tailwind utilities;
+@tailwind variants;
+html { font-size: 13px; }
+body { font-size: 1rem; min-width: 320px }
+html, body, #app {
+    @apply w-full h-full overflow-hidden
+}
+@layer components {
+
+}
+@layer base {
+    *, ::before, ::after {
+        @apply border-gray-200 dark:border-cms-600
+    }
+    body {
+        @apply text-gray-800 bg-white dark:text-gray-300 dark:bg-cms-700
+    }
+    [type='checkbox'], [type='radio'], [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select, button, [type="button"], [role="button"] {
+        @apply border-gray-200 dark:border-cms-600 dark:bg-cms-800 focus:border-blue-600 dark:focus:border-blue-600
+    }
+    [type='checkbox'], [type='radio'] {
+        @apply focus:ring-0 focus:ring-offset-0 checked:border-current dark:checked:bg-current transition-all
+    }
+    [type='checkbox'] {
+        background-position: 0 1rem;
+    }
+    [type='checkbox']:checked, [type='radio']:checked {
+        background-position: 0 0;
+    }
+    button:focus, [type="button"]:focus, [role="button"]:focus, button:active, [type="button"]:active, [role="button"]:active {
+        @apply border-blue-600 ring-1 ring-blue-600 dark:border-blue-600
+    }
+    .btn-sm {
+        @apply inline-flex items-center text-sm px-2 py-1 min-h-[2rem] border rounded whitespace-nowrap select-none cursor-pointer transition
+    }
+    .btn-sm:disabled {
+        cursor: none;
+    }
+    .btn-green {
+        @apply bg-green-600 dark:bg-green-600 border-transparent dark:border-transparent text-white hover:bg-green-700 focus:border-green-500 dark:focus:border-green-500 focus:ring-green-500
+    }
+    .btn-green.disabled, .btn-green:disabled {
+        @apply hover:bg-green-700 cursor-none
+    }
+    .btn-red {
+        @apply bg-rose-600 border-transparent text-white hover:bg-rose-700 focus:border-rose-500 focus:ring-rose-500
+    }
+    .btn-outline-red {
+        @apply border-2 focus:ring-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:border-rose-700 hover:text-white focus:border-rose-600 focus:ring-rose-600
+    }
+    .btn-gray {
+        @apply bg-slate-200 border-transparent dark:border-transparent text-gray-900 dark:text-gray-100 hover:bg-slate-100 dark:bg-gray-600 dark:hover:bg-gray-500
+    }
+    .btn-light {
+        @apply bg-gray-50 border-transparent dark:border-transparent text-gray-900 dark:text-gray-200 hover:bg-white dark:bg-cms-600 hover:dark:bg-cms-400
+    }
+    ::-webkit-calendar-picker-indicator {
+        @apply opacity-60 dark:invert
+    }
+    .alert {
+        @apply rounded p-4
+    }
+    .alert-blue {
+        @apply bg-blue-500/40
+    }
+    .alert-info {
+        @apply bg-blue-500/40
+    }
+    .alert-error {
+        @apply bg-rose-600/40
+    }
+    .alert-warning {
+        @apply bg-amber-500/40
+    }
+    .alert code {
+        @apply text-fuchsia-500 dark:text-fuchsia-400
+    }
+    /**
+     * Panel
+     */
+    .panel a:not([class]), .link {
+        @apply text-blue-400 no-underline hover:text-blue-500 hover:underline visited:text-fuchsia-500 cursor-pointer
+    }
+    /**
+     * Table
+     */
+    .data {
+        @apply relative w-full overflow-y-hidden overflow-x-auto
+    }
+    .data table {
+        @apply w-full
+    }
+    .data thead th {
+        @apply max-w-full h-0 p-0 whitespace-nowrap border-2 border-t-0 first:border-l-0 last:border-r-0 first:pl-4 last:pr-4 bg-gray-100 dark:bg-cms-800
+    }
+    .data thead th {
+        @apply max-w-full h-0 px-3 py-2 whitespace-nowrap border-2 border-t-0 first:border-l-0 last:border-r-0 first:pl-4 last:pr-4 bg-gray-100 dark:bg-cms-800
+    }
+    .data thead tr.filters th > div {
+        @apply -m-[1px]
+    }
+    .data thead tr.filters select, .data thead tr.filters input {
+        @apply focus:z-10 relative
+    }
+    .data thead .sort {
+        @apply absolute right-2 cursor-pointer
+    }
+    .data thead th .active .sort, .data thead th:hover .sort {
+        @apply text-blue-500
+    }
+    .data tbody tr:not(.category) {
+        @apply even:bg-gray-400/5 hover:bg-gray-500/10 dark:hover:bg-gray-300/10
+    }
+    .data tbody tr:not(.category).active {
+        @apply !bg-blue-500/20 dark:!bg-blue-500/20
+    }
+    .data tbody td {
+        @apply px-3 py-1 first:pl-6 last:pr-6
+    }
+    .data tbody tr.category td {
+        @apply px-4 pt-3 pb-1 border-b-2 border-b-gray-600 font-bold dark:border-b-gray-700
+    }
+    .data tbody tr.category {
+        @apply cursor-pointer hover:text-blue-500
+    }
+    .data tbody tr.disabled {
+        @apply even:bg-rose-600/10 bg-rose-600/20 hover:bg-rose-600/30 dark:hover:bg-rose-600/30
+    }
+}
+.logo { min-width: 2rem; min-height: 2rem; background: url("../js/assets/logo.svg") no-repeat center center; background-size: contain; }
+.line-height-1 {
+    @apply leading-none
+}
+.appearance-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+}
+/**
+ * Notify
+ */
+.notifications {
+    top: .5rem !important;
+}
+.notifications .vue-notification.error {
+    @apply bg-rose-600 border-rose-700
+}
+/**
+ * Codemirror
+ */
+.v-codemirror {
+    display: flex !important;
+}
+.editor-fullscreen .v-codemirror {
+    @apply text-lg
+}
+.v-codemirror .ͼ1.cm-editor {
+    @apply w-full border bg-white border-gray-200 rounded
+}
+.v-codemirror .ͼo.ͼ1.cm-editor {
+    @apply border-cms-600 bg-cms-800
+}
+.v-codemirror.border-r-0 .ͼ1.cm-editor {
+    border-right: none;
+}
+.v-codemirror.border-l-0 .ͼ1.cm-editor {
+    border-left: none;
+}
+.v-codemirror .ͼ1.cm-editor.cm-focused {
+    @apply outline outline-1 outline-blue-600 outline-offset-0 border-blue-600
+}
+.v-codemirror .ͼ1 .cm-scroller {
+    @apply flex-nowrap flex-row rounded
+}
+.v-codemirror .ͼ1 .cm-gutters {
+    @apply grow-0 basis-0 rounded
+}
+.v-codemirror .ͼ1 .cm-content {
+    @apply whitespace-pre-line grow basis-0 max-w-full;
+    word-break: break-word;
+}
+/**
+ * Transition
+ */
+.fade-enter-active,
+.fade-leave-active {
+    transition-duration: 0.1s
+}
+.fade-enter,
+.fade-leave-active {
+    opacity: 0
+}
+/**
+ * Scrollbar
+ */
+::-webkit-scrollbar, *::-webkit-scrollbar, ::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: transparent;
+    border-radius: .5rem;
+    border: .25rem solid transparent
+}
+::-webkit-scrollbar-thumb, *::-webkit-scrollbar-thumb, :hover::-webkit-scrollbar-thumb, *:hover::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 0 1rem rgba(150, 150, 150, 0.5)
+}
+::-webkit-scrollbar-thumb:hover, *::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 0 1rem rgba(150, 150, 150, 0.7)
+}
+::-webkit-scrollbar-corner, *::-webkit-scrollbar-corner {
+    background-color: transparent
+}

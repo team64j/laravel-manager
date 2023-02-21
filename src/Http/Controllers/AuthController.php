@@ -4,10 +4,15 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
@@ -19,16 +24,17 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('manager.auth:manager', [
-            'except' => ['index', 'login']
+            'except' => ['login'],
         ]);
     }
 
-    public function index()
-    {
-        return view('manager::manager');
-    }
-
-    public function login(Request $request)
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     * @throws ValidationException
+     */
+    public function login(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
             'username' => 'required|string',
@@ -43,22 +49,38 @@ class AuthController extends Controller
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->createNewToken((string) $token);
+        auth('web')->login(auth('manager')->user(), $request->boolean('remember'));
+
+        $request->session()->regenerate();
+        $request->session()->put([
+            'XSRF-TOKEN' => Str::random(60),
+        ]);
+
+        return $this->createNewToken((string) $token, $request->session()->get('intended'));
     }
 
-    public function logout()
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
     {
         auth('manager')->logout();
 
         return response()->json(['message' => 'User successfully signed out']);
     }
 
-    public function refresh()
+    /**
+     * @return JsonResponse
+     */
+    public function refresh(): JsonResponse
     {
         return $this->createNewToken(auth('manager')->refresh());
     }
 
-    public function user()
+    /**
+     * @return JsonResponse
+     */
+    public function user(): JsonResponse
     {
         return response()->json(auth('manager')->user());
     }
@@ -77,6 +99,7 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth('manager')->factory()->getTTL() * 60,
             'user' => auth('manager')->user(),
+            'redirect' => url('manager')
         ]);
     }
 }
