@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\ActiveUserSession;
-use App\Models\User;
-use App\Models\UserAttribute;
-use App\Models\UserRole;
+use Team64j\LaravelEvolution\Models\ActiveUserSession;
+use Team64j\LaravelEvolution\Models\User;
+use Team64j\LaravelEvolution\Models\UserAttribute;
+use Team64j\LaravelEvolution\Models\UserRole;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;

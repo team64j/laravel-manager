@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 
 Route::name('manager.api.')
     ->prefix('manager/api')
+    ->middleware('manager.auth:manager')
     ->group(function (): void {
         $requestsNamespace = '\Team64j\LaravelManager\Http\Requests\\';
         $controllersNamespace = '\Team64j\LaravelManager\Http\Controllers\\';

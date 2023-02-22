@@ -41,13 +41,13 @@ class ElementsController extends Controller
     public function show(ElementsRequest $request, string $element, ElementsLayout $layout): ElementsResource
     {
         $data = match ($element) {
-            'templates' => App::call('\Manager\Http\Controllers\TemplateController@categories', [])->collection,
-            'tvs' => App::call('\Manager\Http\Controllers\TvController@categories', [])->collection,
-            'chunks' => App::call('\Manager\Http\Controllers\ChunkController@categories', [])->collection,
-            'snippets' => App::call('\Manager\Http\Controllers\SnippetController@categories', [])->collection,
-            'plugins' => App::call('\Manager\Http\Controllers\PluginController@categories', [])->collection,
-            'modules' => App::call('\Manager\Http\Controllers\ModuleController@categories', [])->collection,
-            'categories' => App::call('\Manager\Http\Controllers\CategoryController@categories', [])->collection,
+            'templates' => App::call('\Team64j\LaravelManager\Http\Controllers\TemplateController@categories', [])->collection,
+            'tvs' => App::call('\Team64j\LaravelManager\Http\Controllers\TvController@categories', [])->collection,
+            'chunks' => App::call('\Team64j\LaravelManager\Http\Controllers\ChunkController@categories', [])->collection,
+            'snippets' => App::call('\Team64j\LaravelManager\Http\Controllers\SnippetController@categories', [])->collection,
+            'plugins' => App::call('\Team64j\LaravelManager\Http\Controllers\PluginController@categories', [])->collection,
+            'modules' => App::call('\Team64j\LaravelManager\Http\Controllers\ModuleController@categories', [])->collection,
+            'categories' => App::call('\Team64j\LaravelManager\Http\Controllers\CategoryController@categories', [])->collection,
             default => []
         };
 

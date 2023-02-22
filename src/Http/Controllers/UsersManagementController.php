@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\DocumentgroupName;
-use App\Models\MembergroupName;
+use Team64j\LaravelEvolution\Models\DocumentgroupName;
+use Team64j\LaravelEvolution\Models\MembergroupName;
 use Illuminate\Support\Facades\App;
 use Team64j\LaravelManager\Http\Requests\UsersManagementRequest;
 use Team64j\LaravelManager\Http\Resources\UsersManagementResource;

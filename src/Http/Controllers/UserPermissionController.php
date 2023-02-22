@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\Permissions;
+use Team64j\LaravelEvolution\Models\Permissions;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Config;

@@ -352,9 +352,9 @@ const router = createRouter({
 router.beforeEach(async (to) => {
   await store.dispatch('Auth/check')
 
-  if (!store.getters['Auth/isAuth']) {
-    location.href = document.baseURI.replace(location.origin, '') + 'logout'
-  }
+  // if (!store.getters['Auth/isAuth']) {
+  //   location.href = document.baseURI.replace(location.origin, '') + '/logout'
+  // }
 
   if (to.meta['lang']) {
     to.meta['title'] = store.getters['Lang/get'](to.meta['lang'])

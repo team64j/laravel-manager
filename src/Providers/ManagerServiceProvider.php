@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Team64j\LaravelManager\Http\Middleware\Authenticate;
+use Team64j\LaravelManager\Http\Middleware\RedirectIfAuthenticated;
 
 class ManagerServiceProvider extends ServiceProvider
 {
@@ -62,6 +63,11 @@ class ManagerServiceProvider extends ServiceProvider
         /**
          * Middleware
          */
+        $this->app['router']->aliasMiddleware(
+            'manager.guest',
+            RedirectIfAuthenticated::class
+        );
+
         $this->app['router']->aliasMiddleware(
             'manager.auth',
             Authenticate::class

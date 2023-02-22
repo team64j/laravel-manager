@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\SitePlugin;
-use App\Models\SystemEventname;
+use Team64j\LaravelEvolution\Models\Category;
+use Team64j\LaravelEvolution\Models\SitePlugin;
+use Team64j\LaravelEvolution\Models\SystemEventname;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;

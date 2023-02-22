@@ -53,7 +53,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'documents',
                 'route' => 'Document',
-                'url' => 'manager/api/document/tree?order=menuindex&dir=asc',
+                'url' => 'api/document/tree?order=menuindex&dir=asc',
                 'keyTitle' => 'pagetitle',
                 'aliases' => [
                     'hide_from_tree' => 'hideChildren',
@@ -99,7 +99,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'templates',
                 'route' => 'Template',
-                'url' => 'manager/api/template/tree',
+                'url' => 'api/template/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -126,7 +126,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'tvs',
                 'route' => 'Tv',
-                'url' => 'manager/api/tv/tree',
+                'url' => 'api/tv/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -152,7 +152,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'chunks',
                 'route' => 'Chunk',
-                'url' => 'manager/api/chunk/tree',
+                'url' => 'api/chunk/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -178,7 +178,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'snippets',
                 'route' => 'Snippet',
-                'url' => 'manager/api/snippet/tree',
+                'url' => 'api/snippet/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -204,7 +204,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'plugins',
                 'route' => 'Plugin',
-                'url' => 'manager/api/plugin/tree',
+                'url' => 'api/plugin/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -230,7 +230,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'modules',
                 'route' => 'Module',
-                'url' => 'manager/api/module/tree',
+                'url' => 'api/module/tree',
                 'category' => true,
                 'aliases' => [
                     'name' => 'title',
@@ -256,7 +256,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'categories',
                 'route' => 'Category',
-                'url' => 'manager/api/category/tree?order=category',
+                'url' => 'api/category/tree?order=category',
                 'category' => true,
                 'aliases' => [
                     'category' => 'title',
@@ -280,7 +280,7 @@ class DashboardLayout
             'attrs' => [
                 'id' => 'treeFiles',
                 'route' => 'File',
-                'url' => 'manager/api/file/tree',
+                'url' => 'api/file/tree',
                 'category' => true,
                 'aliases' => [],
                 'icons' => [
@@ -436,7 +436,7 @@ class DashboardLayout
                                         'attrs' => [
                                             'id' => 'widgetUsers',
                                             'class' => '-mx-4 -mb-4 pb-4 grow',
-                                            'url' => 'manager/api/user/active',
+                                            'url' => 'api/user/active',
                                             'history' => false,
                                             'route' => 'User',
                                             'data' => [],
@@ -469,7 +469,7 @@ class DashboardLayout
                                         'attrs' => [
                                             'id' => 'widgetDocuments',
                                             'class' => '-m-4 pb-4 grow',
-                                            'url' => 'manager/api/document?order=createdon&dir=desc&limit=10&columns=id,pagetitle,longtitle,createdon',
+                                            'url' => 'api/document?order=createdon&dir=desc&limit=10&columns=id,pagetitle,longtitle,createdon',
                                             'history' => false,
                                             'route' => 'Document',
                                             'data' => [],
@@ -502,7 +502,7 @@ class DashboardLayout
                                         'attrs' => [
                                             'id' => 'widgetNews',
                                             'class' => '-m-4 grow h-80 overflow-auto',
-                                            'url' => 'manager/api/dashboard/news',
+                                            'url' => 'api/dashboard/news',
                                             'data' => [],
                                         ],
                                     ],
@@ -533,7 +533,7 @@ class DashboardLayout
                                         'attrs' => [
                                             'id' => 'widgetNews',
                                             'class' => '-m-4 grow h-80 overflow-auto',
-                                            'url' => 'manager/api/dashboard/news-security',
+                                            'url' => 'api/dashboard/news-security',
                                             'data' => [],
                                         ],
                                     ],

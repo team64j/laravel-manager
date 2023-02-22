@@ -8,7 +8,7 @@ $basePath = str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(_
 Route::prefix('manager')
     ->middleware('web')
     ->group(fn() => [
-        Route::middleware('guest:web')
+        Route::middleware('manager.guest:web')
             ->group(fn() => [
                 Route::get('login', [AuthController::class, 'formLogin'])->name('manager.login'),
                 Route::get('forgot', [AuthController::class, 'formForgot'])->name('manager.forgot'),

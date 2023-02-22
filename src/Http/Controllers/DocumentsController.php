@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\SiteContent;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Lang;
+use Team64j\LaravelEvolution\Models\SiteContent;
 use Team64j\LaravelManager\Http\Requests\DocumentsRequest;
 use Team64j\LaravelManager\Http\Resources\DocumentsResource;
 use Team64j\LaravelManager\Layouts\DocumentsLayout;

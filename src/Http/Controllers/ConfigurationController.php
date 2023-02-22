@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\SystemSetting;
+use Team64j\LaravelEvolution\Models\SystemSetting;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Team64j\LaravelManager\Http\Requests\ConfigurationRequest;

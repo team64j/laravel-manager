@@ -31,7 +31,7 @@ export default {
     },
 
     get () {
-      axios.get('manager/api/dashboard/sidebar').then(r => {
+      axios.get('api/dashboard/sidebar').then(r => {
         this.data = r.data.data
         this.meta = r.data.meta
         this.layout = r.data.layout

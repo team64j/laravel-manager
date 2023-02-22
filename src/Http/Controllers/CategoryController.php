@@ -2,7 +2,7 @@
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\Category;
+use Team64j\LaravelEvolution\Models\Category;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;

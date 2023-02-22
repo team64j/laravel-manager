@@ -11,7 +11,7 @@ const mutations = {
 const actions = {
   async check ({ commit }) {
     if (!state.role) {
-      let response = await axios.get('manager/api/bootstrap')
+      let response = await axios.get('api/bootstrap')
 
       if (response.status === 200) {
         await commit('set', response.data.data['user'])

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Layouts;
 
-use App\Models\SiteContent;
+use Team64j\LaravelEvolution\Models\SiteContent;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 

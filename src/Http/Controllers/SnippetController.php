@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\SiteSnippet;
+use Team64j\LaravelEvolution\Models\Category;
+use Team64j\LaravelEvolution\Models\SiteSnippet;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;

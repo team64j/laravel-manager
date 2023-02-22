@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Layouts;
 
-use App\Models\SiteTmplvar;
+use Team64j\LaravelEvolution\Models\SiteTmplvar;
 use Illuminate\Support\Facades\Lang;
 
 class TvLayout

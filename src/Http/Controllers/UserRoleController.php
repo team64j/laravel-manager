@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\UserRole;
+use Team64j\LaravelEvolution\Models\UserRole;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Config;
 use Team64j\LaravelManager\Http\Requests\UserRoleRequest;

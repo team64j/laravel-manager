@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\SiteTemplate;
-use App\Models\SiteTmplvar;
-use App\Models\SiteTmplvarTemplate;
+use Team64j\LaravelEvolution\Models\Category;
+use Team64j\LaravelEvolution\Models\SiteTemplate;
+use Team64j\LaravelEvolution\Models\SiteTmplvar;
+use Team64j\LaravelEvolution\Models\SiteTmplvarTemplate;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
@@ -474,7 +474,7 @@ class TemplateController extends Controller
         ]);
 
         $viewPath = Config::get('view.app');
-        $viewRelativePath = str_replace(dirname(base_path()), '', $viewPath);
+        $viewRelativePath = str_replace(base_path(), '', resource_path('views'));
 
         /** @var SiteTemplate $item */
         foreach ($result->items() as $item) {

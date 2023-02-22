@@ -38,7 +38,7 @@ export default {
     },
 
     get () {
-      axios.get('manager/api/dashboard', {
+      axios.get('api/dashboard', {
         params: this.currentRoute['query'] || null
       }).then(r => {
         this.data = r.data.data

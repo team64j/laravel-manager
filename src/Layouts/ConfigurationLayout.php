@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Layouts;
 
-use App\Models\SiteTemplate;
+use Team64j\LaravelEvolution\Models\SiteTemplate;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;

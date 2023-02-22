@@ -23,6 +23,7 @@ if (navigator.mobile) {
  */
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + (localStorage['token'] || '')
+axios.defaults.baseURL = document.baseURI
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
@@ -33,17 +34,12 @@ axios.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
-  if (response.headers['access-token']) {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.headers['access-token']
-    document.head.querySelector('meta[name="csrf-token"]').content = response.headers['access-token']
-  }
-
   return response
 }, function (error) {
   const status = error.response?.status || 500
 
   if (status === 401) {
-    location.href = document.baseURI.replace(location.origin, '') + 'logout'
+    location.href = document.baseURI.replace(location.origin, '') + '/login'
   }
 
   if (error.response?.data?.message) {
