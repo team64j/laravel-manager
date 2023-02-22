@@ -141,6 +141,15 @@ html, body, #app {
     background-repeat: no-repeat;
     background-size: 1.5em 1.5em;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-background-clip: text;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: white;
+}
 /**
  * Notify
  */

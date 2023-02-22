@@ -4,29 +4,64 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Providers;
 
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 use Team64j\LaravelManager\Http\Middleware\Authenticate;
 
 class ManagerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/auth.php');
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
-        $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
+        $root = realpath(__DIR__ . '/../../');
 
-        //$this->mergeConfigFrom(__DIR__ . '/../../config/auth.php', 'auth');
+        /**
+         * Routes
+         */
+        $this->loadRoutesFrom($root . '/routes/auth.php');
+        $this->loadRoutesFrom($root . '/routes/web.php');
+        $this->loadRoutesFrom($root . '/routes/api.php');
+
+        /**
+         * Config
+         */
+        $this->mergeConfigFrom($root . '/config/global.php', 'global');
 
         $this->app['config']['auth'] = array_merge_recursive(
-            require __DIR__ . '/../../config/auth.php',
+            require $root . '/config/auth.php',
             $this->app['config']['auth']
         );
 
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'manager');
+        /**
+         * Lang
+         */
+        if (str_starts_with($this->app['request']->getPathInfo(), '/manager')) {
+            $this->app->useLangPath($root . '/lang');
 
+            $this->app->setLocale(
+                Str::lower(
+                    Str::substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? $this->app['config']['app.locale'], 0, 2)
+                )
+            );
+        }
+
+        /**
+         * View
+         */
+        $this->loadViewsFrom($root . '/resources/views', 'manager');
+
+        /**
+         * Middleware
+         */
         $this->app['router']->aliasMiddleware(
             'manager.auth',
             Authenticate::class
         );
+
+        /**
+         * Vite
+         */
+        Vite::useHotFile($root . '/public/hot');
+        Vite::useBuildDirectory('../packages/team64j/laravel-manager/public/build');
     }
 }

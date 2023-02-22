@@ -10,6 +10,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -24,8 +25,24 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('manager.auth:manager', [
-            'except' => ['login'],
+            'except' => ['login', 'formLogin', 'formForgot'],
         ]);
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function formLogin(): View | Factory | Application
+    {
+        return view('manager::login');
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
+    public function formForgot(): View | Factory | Application
+    {
+        return view('manager::forgot');
     }
 
     /**

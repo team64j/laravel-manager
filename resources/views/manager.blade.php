@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{ asset('/resources/img/logo.svg') }}" type="image/svg+xml">
     <title>{{ config('global.site_name') }} ({{ env('APP_NAME') }})</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'], '../packages/team64j/laravel-manager/public/build')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <div id="app"></div>

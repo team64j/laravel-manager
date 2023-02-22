@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Team64j\LaravelManager\Http\Controllers\AuthController;
 use Team64j\LaravelManager\Http\Controllers\DashboardController;
 
 Route::prefix('manager')
@@ -8,8 +9,8 @@ Route::prefix('manager')
     ->group(fn() => [
         Route::middleware('guest:web')
             ->group(fn() => [
-                Route::view('login', 'manager::login')->name('manager.login'),
-                Route::view('forgot', 'manager::forgot')->name('manager.forgot'),
+                Route::get('login', [AuthController::class, 'formLogin'])->name('manager.login'),
+                Route::get('forgot', [AuthController::class, 'formForgot'])->name('manager.forgot'),
             ]),
 
 //        Route::any('logout', [AuthController::class, 'logout'])
