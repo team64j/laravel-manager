@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Team64j\LaravelManager\Providers;
 
 use Illuminate\Support\Env;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ class ManagerServiceProvider extends ServiceProvider
     public function boot()
     {
         $root = realpath(__DIR__ . '/../../');
+        $isManager = str_starts_with($this->app['request']->getPathInfo(), '/manager');
 
         Env::getRepository()->set('ASSET_URL', 'public');
 
@@ -22,8 +24,8 @@ class ManagerServiceProvider extends ServiceProvider
          * Routes
          */
         $this->loadRoutesFrom($root . '/routes/auth.php');
-        $this->loadRoutesFrom($root . '/routes/web.php');
         $this->loadRoutesFrom($root . '/routes/api.php');
+        $this->loadRoutesFrom($root . '/routes/web.php');
 
         /**
          * Config
@@ -35,10 +37,14 @@ class ManagerServiceProvider extends ServiceProvider
             $this->app['config']['auth']
         );
 
+        if ($isManager) {
+            Config::set('auth.defaults.guard', 'manager');
+        }
+
         /**
          * Lang
          */
-        if (str_starts_with($this->app['request']->getPathInfo(), '/manager')) {
+        if ($isManager) {
             $this->app->useLangPath($root . '/lang');
 
             $this->app->setLocale(

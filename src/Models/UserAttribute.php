@@ -4,15 +4,12 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Models;
 
-use App\Models\RolePermissions;
-use App\Models\UserRole;
-use App\Traits\Models\TimeMutatorTrait;
 use Carbon\Carbon;
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Team64j\LaravelManager\Traits\TimeMutatorTrait;
 
 /**
  * @property int $id

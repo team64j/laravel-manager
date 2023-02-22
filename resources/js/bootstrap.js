@@ -1,8 +1,8 @@
 import _ from 'lodash'
 import axios from 'axios'
 import { notify } from '@kyvg/vue3-notification'
-// import store from '@/store'
-// import router from '@/router'
+import store from '@/store'
+import router from '@/router'
 
 window._ = _
 
@@ -33,10 +33,10 @@ axios.interceptors.request.use(function (config) {
 
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
-  // if (response.headers['access-token']) {
-  //   axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.headers['access-token']
-  //   document.head.querySelector('meta[name="csrf-token"]').content = response.headers['access-token']
-  // }
+  if (response.headers['access-token']) {
+    axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.headers['access-token']
+    document.head.querySelector('meta[name="csrf-token"]').content = response.headers['access-token']
+  }
 
   return response
 }, function (error) {
@@ -46,12 +46,12 @@ axios.interceptors.response.use(function (response) {
     location.href = document.baseURI.replace(location.origin, '') + 'logout'
   }
 
-  // if (error.response?.data?.message) {
-  //   store.dispatch('GlobalTabs/del', router.currentRoute.value).then(() => notify({
-  //     text: error.response.data.message,
-  //     type: 'error'
-  //   }))
-  // }
+  if (error.response?.data?.message) {
+    store.dispatch('GlobalTabs/del', router.currentRoute.value).then(() => notify({
+      text: error.response.data.message,
+      type: 'error'
+    }))
+  }
 
   return Promise.reject(error)
 })
@@ -61,8 +61,8 @@ window.axios = axios
 /**
  * Auth
  */
-// const auth = async () => await store.dispatch('Auth/check')
-// await auth().then(r => console.log('%c Auth: ' + r, r ? 'color: seagreen' : 'color: crimson'))
+const auth = async () => await store.dispatch('Auth/check')
+await auth().then(r => console.log('%c Auth: ' + r, r ? 'color: seagreen' : 'color: crimson'))
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
