@@ -1,12 +1,12 @@
 @extends('manager::auth')
 
 @section('content')
-    <form method="post" action="{{ route('manager.forgot') }}">
+    <form>
         @csrf
 
         <div class="flex items-center mb-6 pt-4 pl-1">
             <span class="logo w-16 h-16"></span>
-            <span class="pl-4 text-white uppercase text-4xl sm:text-5xl">{{ env('APP_NAME') }}</span>
+            <span class="pl-4 text-white uppercase font-light text-4xl">{{ env('APP_NAME') }}</span>
         </div>
 
         <div class="form-group form-floating mb-6">

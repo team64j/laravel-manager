@@ -17,6 +17,8 @@ class DashboardController extends Controller
      */
     public function index(): View | Factory | Application
     {
-        return view('manager::manager');
+        return view('manager::manager', [
+            'basePath' => str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/'
+        ]);
     }
 }

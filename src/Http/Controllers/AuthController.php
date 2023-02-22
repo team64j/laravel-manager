@@ -34,7 +34,9 @@ class AuthController extends Controller
      */
     public function formLogin(): View | Factory | Application
     {
-        return view('manager::login');
+        return view('manager::login', [
+            'basePath' => str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/',
+        ]);
     }
 
     /**
@@ -42,7 +44,9 @@ class AuthController extends Controller
      */
     public function formForgot(): View | Factory | Application
     {
-        return view('manager::forgot');
+        return view('manager::forgot', [
+            'basePath' => str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/',
+        ]);
     }
 
     /**
@@ -73,7 +77,7 @@ class AuthController extends Controller
             'XSRF-TOKEN' => Str::random(60),
         ]);
 
-        return $this->createNewToken((string) $token, $request->session()->get('intended'));
+        return $this->createNewToken((string) $token);
     }
 
     /**
@@ -116,7 +120,7 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth('manager')->factory()->getTTL() * 60,
             'user' => auth('manager')->user(),
-            'redirect' => url('manager')
+            'redirect' => url('manager'),
         ]);
     }
 }

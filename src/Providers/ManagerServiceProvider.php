@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Providers;
 
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -14,6 +15,8 @@ class ManagerServiceProvider extends ServiceProvider
     public function boot()
     {
         $root = realpath(__DIR__ . '/../../');
+
+        Env::getRepository()->set('ASSET_URL', 'public');
 
         /**
          * Routes
@@ -62,6 +65,12 @@ class ManagerServiceProvider extends ServiceProvider
          * Vite
          */
         Vite::useHotFile($root . '/public/hot');
-        Vite::useBuildDirectory('../packages/team64j/laravel-manager/public/build');
+        Vite::useBuildDirectory(
+            '..' . str_replace(
+                [$this->app->basePath(), DIRECTORY_SEPARATOR],
+                ['', '/'],
+                $root
+            ) . '/public/build'
+        );
     }
 }

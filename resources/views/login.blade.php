@@ -6,7 +6,7 @@
 
         <div class="flex items-center mb-6 pt-4 pl-1">
             <span class="logo w-16 h-16"></span>
-            <span class="pl-4 text-white uppercase text-4xl font-light">{{ env('APP_NAME') }}</span>
+            <span class="pl-4 text-white uppercase font-light text-4xl">{{ env('APP_NAME') }}</span>
         </div>
 
         <div class="form-group form-floating mb-6">
@@ -25,7 +25,7 @@
             <input name="password"
                    type="password"
                    id="floatingPassword"
-                   class="w-full bg-transparent py-3 font-bold text-white text-lg rounded {{ $errors->has('password') ? 'border-rose-500' : '' }}"
+                   class="w-full bg-transparent py-3 font-bold text-white text-lg rounded"
                    value="{{ old('password') }}"
                    placeholder="{{ __('global.password') }}">
         </div>
@@ -66,7 +66,7 @@
         formUsername.classList.remove('border-rose-500')
         formPassword.classList.remove('border-rose-500')
 
-        fetch('auth/login', {
+        fetch('manager/auth/login', {
           method: 'post',
           credentials: 'same-origin',
           headers: {
@@ -102,8 +102,6 @@
               }
             })
           }
-        }).catch(response => {
-          console.log(response)
         })
       })
     </script>
