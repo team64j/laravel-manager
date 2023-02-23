@@ -8,6 +8,7 @@ use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Team64j\LaravelManager\Http\Requests\BootstrapRequest;
 use Team64j\LaravelManager\Http\Resources\BootstrapResource;
@@ -389,7 +390,7 @@ class BootstrapController  extends Controller
                             [
                                 'icon' => 'fa fa-sign-out',
                                 'name' => Lang::get('global.logout'),
-                                'href' => 'logout',
+                                'href' => route('manager.logout'),
                             ],
                         ],
                     ],

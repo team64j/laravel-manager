@@ -79,11 +79,17 @@ class AuthController extends Controller
     }
 
     /**
+     * @param Request $request
+     *
      * @return JsonResponse
      */
-    public function logout(): JsonResponse
+    public function logout(Request $request): JsonResponse
     {
         auth('manager')->logout();
+        auth('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return response()->json(['message' => 'User successfully signed out']);
     }

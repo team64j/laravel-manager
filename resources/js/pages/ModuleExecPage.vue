@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <layout v-if="type === 'json'" :data="data" :meta="meta" :layout="layout"/>
-    <iframe v-if="type === 'html'" :src="'web/module/exec/' + this.id"/>
+    <iframe v-if="type === 'html'" :src="this.url"/>
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
 
   data () {
     this.id = this.currentRoute?.['params']?.['id'] || null
+    this.url = document.baseURI + '/web/module/exec/' + this.id
 
     return {
       type: null,
@@ -47,7 +48,7 @@ export default {
 
   methods: {
     get () {
-      axios.get('web/module/exec/' + this.id, {
+      axios.get(this.url, {
         params: this.currentRoute['query'] || null
       }).then(r => {
         if (r.headers['content-type'] === 'application/json') {
