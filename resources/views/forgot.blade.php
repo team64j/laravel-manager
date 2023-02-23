@@ -6,7 +6,7 @@
 
         <div class="flex items-center mb-6 pt-4 pl-1">
             <span class="logo w-16 h-16"></span>
-            <span class="pl-4 text-white uppercase font-light text-4xl">{{ env('APP_NAME') }}</span>
+            <span class="pl-4 text-white uppercase font-light text-4xl">{{ config('app.name') }}</span>
         </div>
 
         <div class="form-group form-floating mb-6">

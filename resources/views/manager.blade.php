@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{ asset('/vendor/team64j/laravel-manager/resources/js/assets/logo.svg') }}" type="image/svg+xml">
-    <title>{{ config('global.site_name') }} ({{ env('APP_NAME') }})</title>
+    <title>{{ config('global.site_name') }} ({{ config('app.name') }})</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>

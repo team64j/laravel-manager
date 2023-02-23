@@ -63,29 +63,29 @@ class ManagerServiceProvider extends ServiceProvider
      */
     protected function getConfig(): void
     {
-        Config::set(
-            'global',
-            (array) Cache::store('file')
-                ->rememberForever(
-                    'cms.settings',
-                    fn() => SystemSetting::query()
-                        ->pluck('setting_value', 'setting_name')
-                        ->toArray()
-                )
-        );
+        $dbPrefix = \env('DB_PREFIX');
 
-        Config::set(
-            'auth',
-            array_merge_recursive(
-                require $this->basePath . '/config/auth.php',
-                Config::get('auth')
-            )
-        );
-
-        Config::set('database.connections.mysql.prefix', \env('DB_PREFIX', ''));
-        Config::set('database.connections.pgsql.prefix', \env('DB_PREFIX', ''));
+        if (!is_null($dbPrefix)) {
+            Config::set('database.connections.mysql.prefix', $dbPrefix);
+            Config::set('database.connections.pgsql.prefix', $dbPrefix);
+        }
 
         if ($this->isManager) {
+            Config::set(
+                'global',
+                (array) Cache::store('file')
+                    ->rememberForever(
+                        'cms.settings',
+                        fn() => SystemSetting::query()
+                            ->pluck('setting_value', 'setting_name')
+                            ->toArray()
+                    )
+            );
+
+            $auth = require $this->basePath . '/config/auth.php';
+
+            Config::set('auth.guards.manager', $auth['guards']['manager']);
+            Config::set('auth.providers.manager', $auth['providers']['manager']);
             Config::set('auth.defaults.guard', 'manager');
         }
     }
