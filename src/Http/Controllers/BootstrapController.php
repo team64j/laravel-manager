@@ -8,7 +8,6 @@ use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 use Team64j\LaravelManager\Http\Requests\BootstrapRequest;
 use Team64j\LaravelManager\Http\Resources\BootstrapResource;
@@ -63,11 +62,14 @@ class BootstrapController  extends Controller
                     ],
                     [
                         'key' => 'dashboard',
-                        'html' => '<span class="block truncate" style="max-width: 10rem;">' .
-                            Config::get('global.site_name') .
-                            '</span><span class="block text-gray-400 whitespace-nowrap">Evolution CE <span class="text-xs">v' .
-                            Config::get('global.settings_version') . '</span></span>',
-                        'image' => 'public/resources/img/logo.svg',
+                        'html' => '
+<span class="block truncate" style="max-width: 10rem;">
+    ' . Config::get('global.site_name') . '
+</span>
+<span class="block text-gray-400 whitespace-nowrap">
+    Evolution CE <span class="text-xs">v' . Config::get('global.settings_version') . '
+</span>',
+                        'icon' => 'logo',
                         'class' => 'line-height-1',
                         'to' => [
                             'name' => 'Dashboard',

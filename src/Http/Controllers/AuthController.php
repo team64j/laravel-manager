@@ -8,7 +8,9 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -23,7 +25,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('manager.auth:manager', [
-            'except' => ['login', 'formLogin', 'formForgot'],
+            'except' => ['login', 'logout', 'formLogin', 'formForgot'],
         ]);
     }
 
@@ -81,15 +83,19 @@ class AuthController extends Controller
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Application|JsonResponse|RedirectResponse|Redirector
      */
-    public function logout(Request $request): JsonResponse
+    public function logout(Request $request): JsonResponse | Redirector | Application | RedirectResponse
     {
-        auth('manager')->logout();
-        auth('web')->logout();
+        if ($request->isMethod('get')) {
+            auth('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+            return redirect(route('manager.login'));
+        }
+
+        auth('manager')->logout();
 
         return response()->json(['message' => 'User successfully signed out']);
     }

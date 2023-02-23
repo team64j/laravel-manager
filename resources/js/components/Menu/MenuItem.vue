@@ -27,7 +27,7 @@
 
       <span v-if="item['html']" v-html="item['html']"/>
 
-      <span class="toggle">
+      <span class="toggle" v-if="item['data']">
         <i v-if="item['data'] && !item['loading']" class="fa fa-angle-right"/>
         <loader-icon v-else-if="item['loading']"/>
       </span>

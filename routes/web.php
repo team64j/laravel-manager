@@ -15,7 +15,7 @@ Route::prefix('manager')
                 Route::get('forgot', [AuthController::class, 'formForgot'])->name('manager.forgot'),
             ]),
 
-        Route::any('logout', [AuthController::class, 'logout'])
+        Route::get('logout', [AuthController::class, 'logout'])
             ->middleware('manager.auth:web')
             ->name('manager.logout'),
 

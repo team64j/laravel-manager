@@ -39,7 +39,7 @@ axios.interceptors.response.use(function (response) {
   const status = error.response?.status || 500
 
   if (status === 401) {
-    location.href = document.baseURI.replace(location.origin, '') + '/login'
+    location.href = document.baseURI + '/logout'
   }
 
   if (error.response?.data?.message) {
