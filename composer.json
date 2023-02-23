@@ -23,11 +23,11 @@
     }
   },
   "scripts": {
-    "post-update-cmd": [
+    "post-package-install": [
       "@php artisan jwt:secret",
       "@php artisan vendor:publish --provider=\"Team64j\\LaravelManager\\Providers\\ManagerServiceProvider\""
     ],
-    "post-install-cmd": [
+    "pre-package-update": [
       "@php artisan jwt:secret",
       "@php artisan vendor:publish --provider=\"Team64j\\LaravelManager\\Providers\\ManagerServiceProvider\""
     ]
