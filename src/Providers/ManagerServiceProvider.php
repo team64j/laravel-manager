@@ -31,21 +31,12 @@ class ManagerServiceProvider extends ServiceProvider
         $this->basePath = realpath(__DIR__ . '/../../');
         $this->isManager = str_starts_with($this->app['request']->getPathInfo(), '/manager');
 
-        $this->getEnv();
         $this->getRoutes();
         $this->getConfig();
         $this->getLang();
         $this->getView();
         $this->getMiddleware();
         $this->getVite();
-    }
-
-    /**
-     * @return void
-     */
-    protected function getEnv(): void
-    {
-        Env::getRepository()->set('ASSET_URL', 'public');
     }
 
     /**
