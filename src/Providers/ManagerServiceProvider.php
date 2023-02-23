@@ -63,18 +63,27 @@ class ManagerServiceProvider extends ServiceProvider
      */
     protected function getConfig(): void
     {
-        $this->app['config']['global'] = (array) Cache::store('file')
-            ->rememberForever(
-                'cms.settings',
-                fn() => SystemSetting::query()
-                    ->pluck('setting_value', 'setting_name')
-                    ->toArray()
-            );
-
-        $this->app['config']['auth'] = array_merge_recursive(
-            require $this->basePath . '/config/auth.php',
-            $this->app['config']['auth']
+        Config::set(
+            'global',
+            (array) Cache::store('file')
+                ->rememberForever(
+                    'cms.settings',
+                    fn() => SystemSetting::query()
+                        ->pluck('setting_value', 'setting_name')
+                        ->toArray()
+                )
         );
+
+        Config::set(
+            'auth',
+            array_merge_recursive(
+                require $this->basePath . '/config/auth.php',
+                Config::get('auth')
+            )
+        );
+
+        Config::set('database.connections.mysql.prefix', \env('DB_PREFIX', ''));
+        Config::set('database.connections.pgsql.prefix', \env('DB_PREFIX', ''));
 
         if ($this->isManager) {
             Config::set('auth.defaults.guard', 'manager');
