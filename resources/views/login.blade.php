@@ -84,6 +84,8 @@
               localStorage['token'] = response['access_token']
               location.href = response['redirect']
             })
+          } else if (response.status === 419) {
+            location.reload()
           } else if (response.status === 401) {
             formUsername.classList.add('border-rose-500')
             formPassword.classList.add('border-rose-500')

@@ -35,6 +35,7 @@ class AuthController extends Controller
     public function formLogin(): View | Factory | Application
     {
         return view('manager::login', [
+            'baseHref' => url(str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/') . '/',
             'basePath' => str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/',
         ]);
     }
