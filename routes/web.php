@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Team64j\LaravelManager\Http\Controllers\AuthController;
 use Team64j\LaravelManager\Http\Controllers\ModuleController;
 
-$basePath = str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/';
+$basePath = str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__)) . '/';
 
 Route::prefix(Config::get('cms.mgr_dir'))
     ->middleware('web')
