@@ -19,13 +19,13 @@
     "file": "assets/fonts/fa-v4compatibility.7c377405.woff2",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.woff2"
   },
-  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
-    "file": "assets/fonts/fa-regular-400.12dea17b.ttf",
-    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
-  },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf": {
     "file": "assets/fonts/fa-brands-400.2ef6fdde.ttf",
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-brands-400.ttf"
+  },
+  "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fonts/fa-regular-400.12dea17b.ttf",
+    "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-regular-400.ttf"
   },
   "node_modules/@fortawesome/fontawesome-free/webfonts/fa-v4compatibility.ttf": {
     "file": "assets/fonts/fa-v4compatibility.8d9500e8.ttf",
@@ -36,7 +36,7 @@
     "src": "node_modules/@fortawesome/fontawesome-free/webfonts/fa-solid-900.ttf"
   },
   "resources/js/app.js": {
-    "file": "assets/app.2d7615bf.js",
+    "file": "assets/app.26b1457b.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
@@ -189,7 +189,7 @@
     "file": "assets/js/w3c-keyname.f0bedd1c.js"
   },
   "resources/js/pages/DashboardPage.vue": {
-    "file": "assets/js/DashboardPage.41ad5325.js",
+    "file": "assets/js/DashboardPage.1215fb8d.js",
     "src": "resources/js/pages/DashboardPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -213,7 +213,7 @@
     ]
   },
   "resources/js/pages/DocumentPage.vue": {
-    "file": "assets/js/DocumentPage.1f425d6a.js",
+    "file": "assets/js/DocumentPage.8465c0b6.js",
     "src": "resources/js/pages/DocumentPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -237,7 +237,7 @@
     ]
   },
   "resources/js/pages/DocumentsPage.vue": {
-    "file": "assets/js/DocumentsPage.8ce778e5.js",
+    "file": "assets/js/DocumentsPage.6e20cc91.js",
     "src": "resources/js/pages/DocumentsPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -261,7 +261,7 @@
     ]
   },
   "resources/js/pages/ElementsPage.vue": {
-    "file": "assets/js/ElementsPage.623e84ed.js",
+    "file": "assets/js/ElementsPage.30e580eb.js",
     "src": "resources/js/pages/ElementsPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -285,7 +285,7 @@
     ]
   },
   "resources/js/pages/TemplatePage.vue": {
-    "file": "assets/js/TemplatePage.32522cf3.js",
+    "file": "assets/js/TemplatePage.fdb68e3c.js",
     "src": "resources/js/pages/TemplatePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -309,7 +309,7 @@
     ]
   },
   "resources/js/pages/TvPage.vue": {
-    "file": "assets/js/TvPage.2761e77b.js",
+    "file": "assets/js/TvPage.c3139453.js",
     "src": "resources/js/pages/TvPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -333,7 +333,7 @@
     ]
   },
   "resources/js/pages/TvSortPage.vue": {
-    "file": "assets/js/TvSortPage.9ea3731e.js",
+    "file": "assets/js/TvSortPage.5ef66e6b.js",
     "src": "resources/js/pages/TvSortPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -357,7 +357,7 @@
     ]
   },
   "resources/js/pages/ChunkPage.vue": {
-    "file": "assets/js/ChunkPage.ca29031d.js",
+    "file": "assets/js/ChunkPage.0b61f759.js",
     "src": "resources/js/pages/ChunkPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -381,7 +381,7 @@
     ]
   },
   "resources/js/pages/SnippetPage.vue": {
-    "file": "assets/js/SnippetPage.a83aaf9d.js",
+    "file": "assets/js/SnippetPage.168cef73.js",
     "src": "resources/js/pages/SnippetPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -405,7 +405,7 @@
     ]
   },
   "resources/js/pages/PluginPage.vue": {
-    "file": "assets/js/PluginPage.6c385cfe.js",
+    "file": "assets/js/PluginPage.ed2280b5.js",
     "src": "resources/js/pages/PluginPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -429,7 +429,7 @@
     ]
   },
   "resources/js/pages/PluginSortPage.vue": {
-    "file": "assets/js/PluginSortPage.1464a2c3.js",
+    "file": "assets/js/PluginSortPage.7b68fe31.js",
     "src": "resources/js/pages/PluginSortPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -453,7 +453,7 @@
     ]
   },
   "resources/js/pages/ModulePage.vue": {
-    "file": "assets/js/ModulePage.e1a5a636.js",
+    "file": "assets/js/ModulePage.db6900c3.js",
     "src": "resources/js/pages/ModulePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -477,7 +477,7 @@
     ]
   },
   "resources/js/pages/ModuleExecPage.vue": {
-    "file": "assets/js/ModuleExecPage.d123e32b.js",
+    "file": "assets/js/ModuleExecPage.4ce88171.js",
     "src": "resources/js/pages/ModuleExecPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -504,7 +504,7 @@
     ]
   },
   "resources/js/pages/CategoryPage.vue": {
-    "file": "assets/js/CategoryPage.c8256cff.js",
+    "file": "assets/js/CategoryPage.5711e61d.js",
     "src": "resources/js/pages/CategoryPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -528,7 +528,7 @@
     ]
   },
   "resources/js/pages/CategorySortPage.vue": {
-    "file": "assets/js/CategorySortPage.dcd230b6.js",
+    "file": "assets/js/CategorySortPage.bb623e13.js",
     "src": "resources/js/pages/CategorySortPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -552,7 +552,7 @@
     ]
   },
   "resources/js/pages/UserPage.vue": {
-    "file": "assets/js/UserPage.41397f9b.js",
+    "file": "assets/js/UserPage.bfdbf815.js",
     "src": "resources/js/pages/UserPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -576,7 +576,7 @@
     ]
   },
   "resources/js/pages/UsersPage.vue": {
-    "file": "assets/js/UsersPage.4daaaa0a.js",
+    "file": "assets/js/UsersPage.f2e14f79.js",
     "src": "resources/js/pages/UsersPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -600,7 +600,7 @@
     ]
   },
   "resources/js/pages/UsersManagementPage.vue": {
-    "file": "assets/js/UsersManagementPage.50e7c31e.js",
+    "file": "assets/js/UsersManagementPage.c15854e2.js",
     "src": "resources/js/pages/UsersManagementPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -624,7 +624,7 @@
     ]
   },
   "resources/js/pages/UsersRolePage.vue": {
-    "file": "assets/js/UsersRolePage.3d1e5eed.js",
+    "file": "assets/js/UsersRolePage.7476e2dd.js",
     "src": "resources/js/pages/UsersRolePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -648,7 +648,7 @@
     ]
   },
   "resources/js/pages/UsersCategoryPage.vue": {
-    "file": "assets/js/UsersCategoryPage.416fb91b.js",
+    "file": "assets/js/UsersCategoryPage.a680c158.js",
     "src": "resources/js/pages/UsersCategoryPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -672,7 +672,7 @@
     ]
   },
   "resources/js/pages/UsersGroupsPage.vue": {
-    "file": "assets/js/UsersGroupsPage.100bb823.js",
+    "file": "assets/js/UsersGroupsPage.35d8ec17.js",
     "src": "resources/js/pages/UsersGroupsPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -696,7 +696,7 @@
     ]
   },
   "resources/js/pages/CachePage.vue": {
-    "file": "assets/js/CachePage.0d2bcef1.js",
+    "file": "assets/js/CachePage.3ea82ea5.js",
     "src": "resources/js/pages/CachePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -720,7 +720,7 @@
     ]
   },
   "resources/js/pages/SearchPage.vue": {
-    "file": "assets/js/SearchPage.23e0e8b2.js",
+    "file": "assets/js/SearchPage.fdd5efef.js",
     "src": "resources/js/pages/SearchPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -744,7 +744,7 @@
     ]
   },
   "resources/js/pages/ConfigurationPage.vue": {
-    "file": "assets/js/ConfigurationPage.77de7b85.js",
+    "file": "assets/js/ConfigurationPage.c775d114.js",
     "src": "resources/js/pages/ConfigurationPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -768,7 +768,7 @@
     ]
   },
   "resources/js/pages/SchedulesPage.vue": {
-    "file": "assets/js/SchedulesPage.0f857297.js",
+    "file": "assets/js/SchedulesPage.cb2542ba.js",
     "src": "resources/js/pages/SchedulesPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -792,7 +792,7 @@
     ]
   },
   "resources/js/pages/EventLogsPage.vue": {
-    "file": "assets/js/EventLogsPage.1bd3384d.js",
+    "file": "assets/js/EventLogsPage.891b4401.js",
     "src": "resources/js/pages/EventLogsPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -816,7 +816,7 @@
     ]
   },
   "resources/js/pages/EventLogPage.vue": {
-    "file": "assets/js/EventLogPage.09f4a6ff.js",
+    "file": "assets/js/EventLogPage.9d684f9f.js",
     "src": "resources/js/pages/EventLogPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -843,7 +843,7 @@
     ]
   },
   "resources/js/pages/SystemLogPage.vue": {
-    "file": "assets/js/SystemLogPage.d29c6f66.js",
+    "file": "assets/js/SystemLogPage.26104d40.js",
     "src": "resources/js/pages/SystemLogPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -867,7 +867,7 @@
     ]
   },
   "resources/js/pages/SystemInfoPage.vue": {
-    "file": "assets/js/SystemInfoPage.8d0e74e2.js",
+    "file": "assets/js/SystemInfoPage.033c9288.js",
     "src": "resources/js/pages/SystemInfoPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -891,7 +891,7 @@
     ]
   },
   "resources/js/pages/HelpPage.vue": {
-    "file": "assets/js/HelpPage.a7283a0f.js",
+    "file": "assets/js/HelpPage.ea8a35ea.js",
     "src": "resources/js/pages/HelpPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -915,7 +915,7 @@
     ]
   },
   "resources/js/pages/PasswordChangePage.vue": {
-    "file": "assets/js/PasswordChangePage.66eea457.js",
+    "file": "assets/js/PasswordChangePage.927690bd.js",
     "src": "resources/js/pages/PasswordChangePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -939,7 +939,7 @@
     ]
   },
   "resources/js/pages/FilesPage.vue": {
-    "file": "assets/js/FilesPage.17a07703.js",
+    "file": "assets/js/FilesPage.dd7711de.js",
     "src": "resources/js/pages/FilesPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -966,7 +966,7 @@
     ]
   },
   "resources/js/pages/FilePage.vue": {
-    "file": "assets/js/FilePage.c0e28f20.js",
+    "file": "assets/js/FilePage.089288de.js",
     "src": "resources/js/pages/FilePage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -993,7 +993,7 @@
     ]
   },
   "resources/js/pages/NotFoundPage.vue": {
-    "file": "assets/js/NotFoundPage.bbc317db.js",
+    "file": "assets/js/NotFoundPage.bb4d16b6.js",
     "src": "resources/js/pages/NotFoundPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1017,7 +1017,7 @@
     ]
   },
   "resources/js/pages/RedirectPage.vue": {
-    "file": "assets/js/RedirectPage.da29a17c.js",
+    "file": "assets/js/RedirectPage.f06929e2.js",
     "src": "resources/js/pages/RedirectPage.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1041,25 +1041,25 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/css/app.465705a3.css",
+    "file": "assets/css/app.c7736d0e.css",
     "src": "resources/css/app.css",
     "isEntry": true
-  },
-  "resources/js/pages/ModuleExecPage.css": {
-    "file": "assets/css/ModuleExecPage.a32a4516.css",
-    "src": "resources/js/pages/ModuleExecPage.css"
   },
   "resources/js/pages/EventLogPage.css": {
     "file": "assets/css/EventLogPage.a799eeb7.css",
     "src": "resources/js/pages/EventLogPage.css"
   },
-  "resources/js/pages/FilesPage.css": {
-    "file": "assets/css/FilesPage.16fc0c2b.css",
-    "src": "resources/js/pages/FilesPage.css"
-  },
   "resources/js/pages/FilePage.css": {
     "file": "assets/css/FilePage.d58c4ca7.css",
     "src": "resources/js/pages/FilePage.css"
+  },
+  "resources/js/pages/ModuleExecPage.css": {
+    "file": "assets/css/ModuleExecPage.a32a4516.css",
+    "src": "resources/js/pages/ModuleExecPage.css"
+  },
+  "resources/js/pages/FilesPage.css": {
+    "file": "assets/css/FilesPage.16fc0c2b.css",
+    "src": "resources/js/pages/FilesPage.css"
   },
   "resources/js/app.css": {
     "file": "assets/css/app.a0893a8f.css",
