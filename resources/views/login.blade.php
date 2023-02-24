@@ -66,7 +66,7 @@
         formUsername.classList.remove('border-rose-500')
         formPassword.classList.remove('border-rose-500')
 
-        fetch('manager/auth/login', {
+        fetch('auth/login', {
           method: 'post',
           credentials: 'same-origin',
           headers: {

@@ -1,12 +1,13 @@
 <?php
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Team64j\LaravelManager\Http\Controllers\AuthController;
 use Team64j\LaravelManager\Http\Controllers\ModuleController;
 
 $basePath = str_replace([base_path(), DIRECTORY_SEPARATOR], ['', '/'], dirname(__DIR__, 3)) . '/';
 
-Route::prefix('manager')
+Route::prefix(Config::get('cms.mgr_dir'))
     ->middleware('web')
     ->group(fn() => [
         Route::middleware('manager.guest:web')

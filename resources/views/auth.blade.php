@@ -1,15 +1,8 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <base href="{{ $baseHref }}">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ asset($basePath . 'resources/js/assets/logo.svg') }}" type="image/svg+xml">
-    <title>{{ config('global.site_name') }} ({{ config('app.name') }})</title>
-    @vite(['resources/css/app.css'])
-</head>
+@include('manager::partials.head', [
+    'scripts' => ['resources/css/app.css']
+])
 <body>
 <div id="app" class="bg-cms-800">
     <div class="bg1 absolute left-0 top-0 right-0 bottom-0 bg-no-repeat bg-center bg-cover transition transition-opacity duration-1000"></div>

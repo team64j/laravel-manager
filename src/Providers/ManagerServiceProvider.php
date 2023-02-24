@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Team64j\LaravelManager\Providers;
 
-use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Vite;
@@ -31,8 +30,8 @@ class ManagerServiceProvider extends ServiceProvider
         $this->basePath = realpath(__DIR__ . '/../../');
         $this->isManager = str_starts_with($this->app['request']->getPathInfo(), '/manager');
 
-        $this->getRoutes();
         $this->getConfig();
+        $this->getRoutes();
         $this->getLang();
         $this->getView();
         $this->getMiddleware();
@@ -60,6 +59,8 @@ class ManagerServiceProvider extends ServiceProvider
             Config::set('database.connections.mysql.prefix', $dbPrefix);
             Config::set('database.connections.pgsql.prefix', $dbPrefix);
         }
+
+        $this->mergeConfigFrom($this->basePath . '/config/cms.php', 'cms');
 
         if ($this->isManager) {
             Config::set(

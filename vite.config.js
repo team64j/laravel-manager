@@ -3,11 +3,9 @@ import laravel from 'laravel-vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import * as path from 'path'
 
-process.env.APP_URL = '/'
+process.env.APP_URL = '/team64j/laravel-manager/public'
 //process.env.ASSET_URL = '/vendor' + process.cwd().replace(path.resolve('../../'), '').replace(/\\/g, '/') + '/public'
-process.env.ASSET_URL = '/team64j/laravel-manager/public'
-
-console.log(process.env.ASSET_URL)
+process.env.ASSET_URL = '/'
 
 export default defineConfig({
   root: process.cwd(),

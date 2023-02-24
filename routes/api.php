@@ -3,12 +3,13 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
 
-Route::name('manager.api.')
-    ->prefix('manager/api')
+Route::prefix(Config::get('cms.mgr_dir') . '/api')
+    ->name('manager.api.')
     ->middleware('manager.auth:manager')
     ->group(function (): void {
         $requestsNamespace = '\Team64j\LaravelManager\Http\Requests\\';
