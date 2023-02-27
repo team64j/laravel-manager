@@ -2,7 +2,7 @@
 
 namespace Team64j\LaravelManager\Http\Controllers;
 
-use App\Facades\Uri;
+use Team64j\LaravelEvolution\Facades\Uri;
 use Team64j\LaravelEvolution\Models\SiteContent;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
