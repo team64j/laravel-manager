@@ -16,9 +16,12 @@ use Team64j\LaravelManager\Http\Middleware\RedirectIfAuthenticated;
 class ManagerServiceProvider extends ServiceProvider
 {
     /**
-     * @var string
+     * @var array
      */
-    protected string $basePath;
+    protected array $middlewareAliases = [
+        'manager.guest' => RedirectIfAuthenticated::class,
+        'manager.auth' => Authenticate::class,
+    ];
 
     /**
      * @var bool
@@ -30,47 +33,77 @@ class ManagerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->basePath = realpath(__DIR__ . '/../../');
-        $this->isManager = str_starts_with($this->app['request']->getPathInfo(), '/manager');
+        $this->registerConfig();
 
-        $this->getConfig();
+        $this->isManager = str_starts_with($this->app['request']->getPathInfo(), '/' . Config::get('cms.mgr_dir'));
+    }
 
-        if (!$this->isManager) {
-            return;
-        }
+    public function register()
+    {
+        $this->registerAliases();
+        $this->registerMiddlewares();
 
-        $this->getRoutes();
-        $this->getLang();
-        $this->getView();
-        $this->getMiddleware();
-        $this->getVite();
+        $this->booted(function () {
+            if (!$this->isManager) {
+                return;
+            }
+
+            $this->registerRoutes();
+            $this->registerLang();
+            $this->registerView();
+            $this->registerVite();
+        });
+    }
+
+    protected function registerAliases()
+    {
     }
 
     /**
      * @return void
      */
-    protected function getRoutes(): void
+    protected function registerMiddlewares(): void
     {
-        $this->loadRoutesFrom($this->basePath . '/routes/auth.php');
-        $this->loadRoutesFrom($this->basePath . '/routes/api.php');
-        $this->loadRoutesFrom($this->basePath . '/routes/web.php');
+        $router = $this->app['router'];
+
+        $method = method_exists($router, 'aliasMiddleware') ? 'aliasMiddleware' : 'middleware';
+
+        foreach ($this->middlewareAliases as $alias => $middleware) {
+            $router->$method($alias, $middleware);
+        }
     }
 
     /**
      * @return void
      */
-    protected function getConfig(): void
+    protected function registerRoutes(): void
     {
-        $dbPrefix = \env('DB_PREFIX');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/auth.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/api.php');
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/web.php');
+    }
 
-        if (!is_null($dbPrefix)) {
-            Config::set('database.connections.mysql.prefix', $dbPrefix);
-            Config::set('database.connections.pgsql.prefix', $dbPrefix);
+    /**
+     * @return void
+     */
+    protected function registerConfig(): void
+    {
+        $default = Config::get('database.default');
+        $database = require realpath(__DIR__ . '/../../config/database.php');
+        $prefix = $database['connections'][$default]['prefix'] ?? null;
+
+        if (!is_null($prefix)) {
+            Config::set('database.connections.' . $default . '.prefix', $prefix);
         }
 
-        $this->mergeConfigFrom($this->basePath . '/config/cms.php', 'cms');
+        $path = realpath(__DIR__ . '/../../config/cms.php');
+        $this->mergeConfigFrom($path, 'cms');
 
-        if ($this->isManager) {
+        $auth = require realpath(__DIR__ . '/../../config/auth.php');
+        Config::set('auth.guards.manager', $auth['guards']['manager']);
+        Config::set('auth.providers.manager', $auth['providers']['manager']);
+
+        if (!Config::has('global')) {
             Config::set(
                 'global',
                 (array) Cache::store('file')
@@ -81,21 +114,15 @@ class ManagerServiceProvider extends ServiceProvider
                             ->toArray()
                     )
             );
-
-            $auth = require $this->basePath . '/config/auth.php';
-
-            Config::set('auth.guards.manager', $auth['guards']['manager']);
-            Config::set('auth.providers.manager', $auth['providers']['manager']);
-            Config::set('auth.defaults.guard', 'manager');
         }
     }
 
     /**
      * @return void
      */
-    protected function getLang(): void
+    protected function registerLang(): void
     {
-        $this->app->useLangPath($this->basePath . '/lang');
+        $this->app->useLangPath(__DIR__ . '/../../lang');
 
         $this->app->setLocale(
             Str::lower(
@@ -107,39 +134,23 @@ class ManagerServiceProvider extends ServiceProvider
     /**
      * @return void
      */
-    protected function getView(): void
+    protected function registerView(): void
     {
-        $this->loadViewsFrom($this->basePath . '/resources/views', 'manager');
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'manager');
     }
 
     /**
      * @return void
      */
-    protected function getMiddleware(): void
+    protected function registerVite(): void
     {
-        $this->app['router']->aliasMiddleware(
-            'manager.guest',
-            RedirectIfAuthenticated::class
-        );
-
-        $this->app['router']->aliasMiddleware(
-            'manager.auth',
-            Authenticate::class
-        );
-    }
-
-    /**
-     * @return void
-     */
-    protected function getVite(): void
-    {
-        Vite::useHotFile($this->basePath . '/public/hot');
+        Vite::useHotFile(__DIR__ . '/../../public/hot');
 
         Vite::useBuildDirectory(
             '..' . str_replace(
                 [$this->app->basePath(), DIRECTORY_SEPARATOR],
                 ['', '/'],
-                $this->basePath
+                realpath(__DIR__ . '/../../')
             ) . '/public/build'
         );
     }
