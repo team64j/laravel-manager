@@ -37,7 +37,9 @@ Route::prefix(Config::get('cms.mgr_dir') . '/api')
             ) ? App::call($requestClass . '::getRoutes', []) : [];
 
             foreach ($routes as $route) {
-                Route::match(
+                $routeName = $className->lower() . '.' . ($route['name'] ?? $route['action'][1] ?? '');
+
+                Route::name($routeName)->match(
                     [$route['method']],
                     $path->append('/', $route['uri'])->toString(),
                     $route['action']

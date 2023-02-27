@@ -25,12 +25,20 @@ class ManagerServiceProvider extends ServiceProvider
      */
     protected bool $isManager;
 
-    public function boot()
+    /**
+     * @return void
+     */
+    public function boot(): void
     {
         $this->basePath = realpath(__DIR__ . '/../../');
         $this->isManager = str_starts_with($this->app['request']->getPathInfo(), '/manager');
 
         $this->getConfig();
+
+        if (!$this->isManager) {
+            return;
+        }
+
         $this->getRoutes();
         $this->getLang();
         $this->getView();
@@ -87,15 +95,13 @@ class ManagerServiceProvider extends ServiceProvider
      */
     protected function getLang(): void
     {
-        if ($this->isManager) {
-            $this->app->useLangPath($this->basePath . '/lang');
+        $this->app->useLangPath($this->basePath . '/lang');
 
-            $this->app->setLocale(
-                Str::lower(
-                    Str::substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? $this->app['config']['app.locale'], 0, 2)
-                )
-            );
-        }
+        $this->app->setLocale(
+            Str::lower(
+                Str::substr($_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? $this->app['config']['app.locale'], 0, 2)
+            )
+        );
     }
 
     /**
