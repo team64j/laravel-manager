@@ -227,8 +227,10 @@ const routes = [
   {
     path: '/configuration',
     name: 'Configuration',
-    component: () => import('@/pages/ConfigurationPage'),
+    //component: () => import('@/pages/ConfigurationPage'),
+    component: () => import('@/pages/LayoutPage'),
     meta: {
+      url: 'api/configuration',
       icon: 'fa fa-sliders',
       lang: 'settings_title'
     }
@@ -245,8 +247,10 @@ const routes = [
   {
     path: '/event-logs',
     name: 'EventLogs',
-    component: () => import('@/pages/EventLogsPage'),
+    //component: () => import('@/pages/EventLogsPage'),
+    component: () => import('@/pages/LayoutPage'),
     meta: {
+      url: 'api/eventlog',
       icon: 'fa fa-exclamation-triangle',
       lang: 'eventlog_viewer'
     }
@@ -263,8 +267,10 @@ const routes = [
   {
     path: '/system-log',
     name: 'SystemLog',
-    component: () => import('@/pages/SystemLogPage'),
+    //component: () => import('@/pages/SystemLogPage'),
+    component: () => import('@/pages/LayoutPage'),
     meta: {
+      url: 'api/systemlog',
       icon: 'fa fa-user-secret',
       lang: 'mgrlog_view'
     }

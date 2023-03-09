@@ -11,15 +11,17 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Team64j\LaravelManager\Http\Requests\EventLogRequest;
 use Team64j\LaravelManager\Http\Resources\EventLogResource;
+use Team64j\LaravelManager\Layouts\EventLogLayout;
 
 class EventLogController extends Controller
 {
     /**
      * @param EventLogRequest $request
+     * @param EventLogLayout $layout
      *
      * @return AnonymousResourceCollection
      */
-    public function index(EventLogRequest $request): AnonymousResourceCollection
+    public function index(EventLogRequest $request, EventLogLayout $layout): AnonymousResourceCollection
     {
         $filterType = $request->input('type');
         $filterUser = $request->input('user', '');
@@ -112,7 +114,6 @@ class EventLogController extends Controller
             [
                 'data' => [
                     'data' => $result->items(),
-                    'route' => 'EventLog',
                     'columns' => [
                         [
                             'name' => 'type',
@@ -176,7 +177,9 @@ class EventLogController extends Controller
                     ],
                 ],
             ],
-        );
+        )->additional([
+            'layout' => $layout->default(),
+        ]);
     }
 
     /**

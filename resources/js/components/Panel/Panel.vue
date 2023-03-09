@@ -250,6 +250,7 @@ export default {
       propColumns: this.columns || this.data?.columns || null,
       propFilter: this.filter || this.data?.filter || null,
       propRoute: this.route || this?.data?.route || null,
+      propUrl: this.url ?? this.$route?.['meta']?.url ?? null,
       x: 0,
       idPanel: id,
       filterValue: null,
@@ -294,8 +295,8 @@ export default {
     },
 
     get (query) {
-      const url = this.$router.resolve(this.url)
-      const path = this.url.split('?')[0]
+      const url = this.$router.resolve(this.propUrl)
+      const path = this.propUrl.split('?')[0]
 
       query = Object.assign(url.query, query || this.currentRoute?.['query'] || {})
 
@@ -341,13 +342,17 @@ export default {
     },
 
     pagination (url) {
-      if (this.url) {
+      if (this.propUrl) {
         url = this.$router.resolve('?' + url)
         if (this.history) {
-          this.$emit('action', 'pushRouter', url, () => this.get(url.query))
-        } else {
-          this.get(url.query)
+          this.$emit(
+              'action',
+              'pushRouter',
+              url
+          )
         }
+
+        this.get(url.query)
       } else {
         this.$emit('action', 'pagination', ...arguments)
       }
@@ -437,7 +442,22 @@ export default {
       }
 
       const dir = this.propData?.['sorting']?.['dir'] === 'asc' ? 'desc' : 'asc'
-      this.$emit('action', 'sort', column['name'], dir)
+
+      if (this.history) {
+        const query = Object.assign({}, this.currentRoute['query'] || {})
+        query['order'] = column['name']
+        query['dir'] = dir
+
+        this.get(query)
+
+        this.$emit(
+            'action',
+            'pushRouter',
+            { query }
+        )
+      } else {
+        this.$emit('action', 'sort', column['name'], dir)
+      }
     },
 
     setFilter (event) {
@@ -477,7 +497,27 @@ export default {
           value = ''
         }
       }
-      this.$emit('action', 'filters', value, name)
+
+      if (this.propUrl) {
+        const query = Object.assign({}, this.currentRoute['query'] || {})
+        if (value !== '') {
+          query[name] = value
+        } else {
+          delete query[name]
+        }
+
+        delete query['page']
+
+        this.get(query)
+
+        this.$emit(
+            'action',
+            'pushRouter',
+            { query }
+        )
+      }
+
+      //this.$emit('action', 'filters', value, name)
     },
 
     updateModelValue () {

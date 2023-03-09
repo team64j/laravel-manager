@@ -309,7 +309,7 @@ class ConfigurationLayout
                                     'attrs' => [
                                         'data' => [
                                             [
-                                                'key' => '',
+                                                'key' => null,
                                                 'value' => 'DocumentParser',
                                             ],
                                             [
@@ -802,7 +802,7 @@ class ConfigurationLayout
                                                 'value' => Lang::get('global.alias_listing_enabled'),
                                             ],
                                             [
-                                                'key' => 1,
+                                                'key' => 2,
                                                 'value' => Lang::get('global.alias_listing_folders'),
                                             ],
                                             [

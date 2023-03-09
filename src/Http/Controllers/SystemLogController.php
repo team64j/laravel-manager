@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Lang;
 use Team64j\LaravelManager\Http\Requests\SystemLogRequest;
 use Team64j\LaravelManager\Http\Resources\SystemLogResource;
+use Team64j\LaravelManager\Layouts\SystemLogLayout;
 use Team64j\LaravelManager\Traits\PaginationTrait;
 
 class SystemLogController extends Controller
@@ -19,10 +20,11 @@ class SystemLogController extends Controller
 
     /**
      * @param SystemLogRequest $request
+     * @param SystemLogLayout $layout
      *
      * @return AnonymousResourceCollection
      */
-    public function index(SystemLogRequest $request): AnonymousResourceCollection
+    public function index(SystemLogRequest $request, SystemLogLayout $layout): AnonymousResourceCollection
     {
         $order = $request->input('order', 'id');
         $dir = $request->input('dir', 'desc');
@@ -204,6 +206,8 @@ class SystemLogController extends Controller
                 ],
                 'pagination' => $this->pagination($result),
             ],
+        ])->additional([
+            'layout' => $layout->default(),
         ]);
     }
 }

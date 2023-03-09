@@ -47,7 +47,7 @@ html, body, #app {
         @apply hover:bg-green-700 cursor-none
     }
     .btn-red {
-        @apply bg-rose-600 border-transparent text-white hover:bg-rose-700 focus:border-rose-500 focus:ring-rose-500
+        @apply bg-rose-600 dark:bg-rose-600 border-transparent dark:border-transparent text-white hover:bg-rose-700 focus:border-rose-500 dark:focus:border-rose-500 focus:ring-rose-500
     }
     .btn-outline-red {
         @apply border-2 focus:ring-1 border-rose-600 text-rose-600 hover:bg-rose-600 hover:border-rose-700 hover:text-white focus:border-rose-600 focus:ring-rose-600
